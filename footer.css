@@ -1,0 +1,10 @@
+.site-footer {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  background: #0f172a;
+  color: #f8fafc;
+}
+.site-footer p { margin: 0; }
+@media (max-width: 600px) {
+  .site-footer { padding: 1rem; }
+}
