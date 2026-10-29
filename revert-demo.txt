@@ -1,1 +1,1 @@
-This line contains an intentional typo: teh example.
+This line demonstrates correcting a minor documentation error.
