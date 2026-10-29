@@ -1,14 +1,31 @@
 # Frontend Version Control Task
 
-A small HTML/CSS frontend project used to practise Git and GitHub collaboration workflows: repositories, branches, commits, pull requests, review, merging, reverting, fetching, and pushing.
+A small HTML/CSS frontend project used to practise Git and GitHub collaboration workflows: repository setup, branches, commits, pull requests, reviews, merging, reverting, fetching, pulling, and pushing.
 
 ## Project files
-- `header.html` and `header.css`: accessible site header and responsive styling.
+- `header.html` and `header.css`: semantic site header, navigation, and responsive styling.
 - `footer.html` and `footer.css`: footer navigation and responsive styling.
+- `revert-demo.txt`: a minor intentional error and its corrective commit.
 
-## Feature branches
-- `feature-header` — builds the site header, navigation links, and responsive header styling.
-- `feature-footer` — builds the footer, footer navigation, and responsive footer styling.
+## Feature branches and purpose
+- `feature-header` — site header, navigation links, responsive styling, and accessibility.
+- `feature-footer` — footer, copyright text, navigation, and responsive styling.
+- `feature-header-layout` — follow-up branch created from `feature-header` to practise branch renaming/migration workflows.
+
+## Pull requests and review
+- [PR #1 — Add accessible responsive site header](https://github.com/MusaGaya/Frontend-version-control-task-MusaGaya/pull/1) — reviewed with comments and merged.
+- [PR #2 — Add accessible responsive site footer](https://github.com/MusaGaya/Frontend-version-control-task-MusaGaya/pull/2) — reviewed with comments and merged.
+
+For the submission, open each link and take a screenshot showing its **Merged** status. Screenshots have not been embedded in this README yet.
+
+## Reversion exercise
+A minor typo was intentionally committed in `revert-demo.txt`, then corrected in a follow-up commit. In a local clone, practise the actual `git revert` command on a disposable test commit so you can demonstrate the command directly:
+
+```bash
+git log --oneline
+git revert <commit-sha>
+git push
+```
 
 ## Git commands practised
 ```bash
@@ -23,20 +40,30 @@ git fetch origin
 git pull origin main
 git merge feature-header
 git revert <commit-sha>
-git branch -m old-name new-name
-git push origin --delete old-name
+git branch -m feature-header feature-header-layout
+git fetch --prune origin
+git push -u origin feature-header-layout
 ```
 
-## Pull request evidence
-PR links and merge status should be recorded here after the pull requests are reviewed and merged. Add screenshots of the merged pull requests before submitting.
+To fetch and check remote branch updates after a rename:
+```bash
+git fetch origin --prune
+git branch -a
+git switch feature-header-layout
+```
 
 ## Lessons learned
-- Branches keep feature work separate from the main branch.
-- Small commits with clear, imperative messages make project history easier to review.
-- Pull requests provide a place to discuss changes before merging.
-- Fetching updates remote-tracking references; pulling fetches and integrates changes.
-- `git revert` creates a new commit that undoes an earlier commit without rewriting shared history.
-- Branch renames should be followed by fetching/pruning remote references as needed.
+- Feature branches keep work isolated until it is ready to merge.
+- Small commits with clear messages make history easier to understand.
+- Pull requests make review and discussion part of collaboration.
+- `git fetch` updates remote-tracking references; `git pull` fetches and integrates changes.
+- `git revert` creates a new commit that undoes a previous commit without rewriting shared history.
+- When renaming a branch, update the upstream tracking branch and fetch/prune remote references.
 
-## Note
-This repository is a learning exercise. Record only workflows that were actually completed, and attach real screenshots of GitHub pull request history for the final submission.
+## Final checklist
+- [x] Public repository created
+- [x] Two feature branches with at least three meaningful commits each
+- [x] Two pull requests opened, reviewed with comments, and merged
+- [x] Minor error committed and corrected
+- [ ] Capture and embed screenshots of the two merged PRs
+- [ ] Complete a local `git revert` and remote branch rename/fetch demonstration if your mentor requires terminal evidence
