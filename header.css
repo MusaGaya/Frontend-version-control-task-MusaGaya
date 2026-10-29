@@ -1,0 +1,14 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background: #172554;
+  color: #fff;
+}
+.site-header a { color: inherit; text-decoration: none; }
+.site-header nav { display: flex; gap: 1rem; }
+@media (max-width: 600px) {
+  .site-header { padding: 1rem; flex-wrap: wrap; }
+}
